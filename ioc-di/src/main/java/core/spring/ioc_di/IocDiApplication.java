@@ -12,15 +12,20 @@ public class IocDiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(IocDiApplication.class, args);
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MyContainer.class);
-		Scanner myScanner = context.getBean(Scanner.class);// dependency injection
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(PojoContainer.class);
+		Trainee trainee = context.getBean("trainee1",Trainee.class);
+		System.out.println(trainee);
+		trainee = context.getBean("trainee2",Trainee.class);
+		System.out.println(trainee);
+		// AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MyContainer.class);
+		// Scanner myScanner = context.getBean(Scanner.class);// dependency injection
 		// int alpha = myScanner.nextInt();
 		// int beta = myScanner.nextInt();
 		// System.out.println(alpha*beta);
-		ArrayList myArrayList = context.getBean(ArrayList.class);
-		myArrayList.add("Razak Mohamed S");myArrayList.add(32);
-		myArrayList.add(true);
-		myArrayList.forEach(System.out::println);
+		// ArrayList myArrayList = context.getBean(ArrayList.class);
+		// myArrayList.add("Razak Mohamed S");myArrayList.add(32);
+		// myArrayList.add(true);
+		// myArrayList.forEach(System.out::println);
 	}
 
 }
