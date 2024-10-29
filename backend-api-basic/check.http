@@ -1,0 +1,28 @@
+POST http://localhost:8081/interview
+Content-Type: application/json
+
+Java
+###
+POST http://localhost:8081/interview
+Content-Type: application/json
+
+Git
+
+###
+GET http://localhost:8081/bmi/154/55
+###
+GET http://localhost:8081/bmi/172/92
+###
+GET http://localhost:8081/dtr/820
+
+###
+
+GET http://localhost:8081/bye
+
+###
+
+GET http://localhost:8081/hi
+
+###
+
+GET http://localhost:8081
