@@ -1,3 +1,16 @@
+DELETE http://localhost:8081/crud/0
+
+###
+POST http://localhost:8081/crud/
+Content-Type: application/json
+
+Angular
+
+###
+GET http://localhost:8081/crud/
+
+###
+
 POST http://localhost:8081/interview
 Content-Type: application/json
 
