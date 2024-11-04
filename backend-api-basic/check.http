@@ -1,3 +1,16 @@
+POST http://localhost:8081/savings/
+Content-Type: application/json
+
+{
+    "accountHolder": "Hema priya",
+    "accountNumber": 112343434343,
+    "accountBalance": 5259.6,
+    "ifscCode": "ABCD00001",
+    "bankName": "BHJD Bank"
+}
+###
+GET http://localhost:8081/savings/
+###
 PUT http://localhost:8081/crud/-1
 Content-Type: application/json
 
