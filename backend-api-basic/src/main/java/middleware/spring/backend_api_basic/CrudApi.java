@@ -23,7 +23,7 @@ public class CrudApi {
     @PutMapping("/{index}")
     public String update(@PathVariable("index") int index,@RequestBody String replacable){
         if(index>0&&index<mySkills.size()){
-            
+            mySkills.set(index, replacable);
             return replacable+" has been updated @ "+index;
         }
         return replacable+" hasn't been updated @ "+index;
