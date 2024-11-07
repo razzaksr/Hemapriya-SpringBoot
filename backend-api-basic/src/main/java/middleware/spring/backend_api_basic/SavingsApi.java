@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Stream;
 import java.util.stream.Collectors;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +25,27 @@ public class SavingsApi {
         new Savings("Rajiya R",949349345443434L,13446.6,"BCD010241","ABC Bank")
     ).collect(Collectors.toList());
 
+    @DeleteMapping("/bynum/{accnum}")
+    public String deletionByAccountNumber(@PathVariable("accnum") long accnum){
+        int oldSize = accounts.size();
+        accounts=accounts.stream().filter(obj->obj.getAccountNumber()!=accnum).toList();
+        int newSize = accounts.size();
+        if(oldSize==newSize)
+            return accnum+" is invalid";
+        else
+            return accnum+" has suspended";
+    }
+
+    @DeleteMapping("/{index}")
+    public String deletionByPosition(@PathVariable("index") int index){
+        if(index>=0&&index<accounts.size()){
+            accounts.remove(index);
+            return "Account has suspended";
+        }
+        return "Invalid account";
+    }
+
+    // update
     @PutMapping("/")
     public String updateAccount(@RequestBody Savings acc){
         for(int index=0;index<accounts.size();index++){
