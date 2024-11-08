@@ -25,6 +25,15 @@ public class SavingsApi {
         new Savings("Rajiya R",949349345443434L,13446.6,"BCD010241","ABC Bank")
     ).collect(Collectors.toList());
 
+    @PutMapping("/fine")
+    public void penalty(){
+        for(int index=0;index<accounts.size();index++){
+            if(accounts.get(index).getAccountBalance()<5000)
+                accounts.get(index).setAccountBalance
+                (accounts.get(index).getAccountBalance()-50);
+        }
+    }
+
     @DeleteMapping("/bynum/{accnum}")
     public String deletionByAccountNumber(@PathVariable("accnum") long accnum){
         int oldSize = accounts.size();
