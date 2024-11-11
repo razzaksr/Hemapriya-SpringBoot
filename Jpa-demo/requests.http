@@ -1,0 +1,14 @@
+GET http://localhost:8081/HP Pavilion
+###
+GET http://localhost:8081/Compaq
+###
+POST http://localhost:8081/
+Content-Type: application/json
+
+{
+    "laptopModel":"HP Pavilions",
+    "laptopSsd":120,
+    "laptopPrice":33400
+}
+###
+GET http://localhost:8081/
