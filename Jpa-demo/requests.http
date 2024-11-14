@@ -1,3 +1,13 @@
+GET http://localhost:8081/filter/256/20000
+###
+GET http://localhost:8081/laps
+###
+GET http://localhost:8081/price/30000
+###
+GET http://localhost:8081/cost/12501
+###
+GET http://localhost:8081/memory/511
+###
 DELETE http://localhost:8081/HP Pavilions
 ###
 DELETE http://localhost:8081/

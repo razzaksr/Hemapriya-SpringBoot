@@ -17,6 +17,31 @@ public class Associate {
     @Autowired
     Manager manager;
 
+    @GetMapping("/filter/{size}/{amount}")
+    public List<Laptop> readManyConditionSQL(@PathVariable("size") int size, @PathVariable("amount") int amount){
+        return manager.fetchManyBySizeAndAmount(size, amount);
+    }
+
+    @GetMapping("/laps")
+    public List<String> readModels(){
+        return manager.fetchMoreModels();
+    }
+
+    @GetMapping("/price/{cash}")
+    public List<Laptop> readMoreViaCost(@PathVariable("cash") int cash){
+        return manager.fetchMoreByAmount(cash);
+    }
+
+    @GetMapping("/cost/{ssd}")
+    public List<Laptop> readMultipleFromLaptops(@PathVariable("ssd") int ssd){
+        return manager.findAllByLaptopPrice(ssd);
+    }
+
+    @GetMapping("/memory/{ssd}")
+    public List<Laptop> readManyFromLaptops(@PathVariable("ssd") int ssd){
+        return manager.findAllByLaptopSsd(ssd);
+    }
+
     @DeleteMapping("/{model}")
     public String deleteRecordById(@PathVariable("model") String model){
         if(manager.findById(model).isPresent()){
