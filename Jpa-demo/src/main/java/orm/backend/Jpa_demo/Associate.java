@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,25 @@ public class Associate {
     // dependency injection
     @Autowired
     Manager manager;
+
+    @DeleteMapping("/{model}")
+    public String deleteRecordById(@PathVariable("model") String model){
+        if(manager.findById(model).isPresent()){
+            manager.deleteById(model);
+            return model+" has been sold out";
+        }
+        else
+            return model+" not available";
+    }
+
+    @DeleteMapping("/")
+    public String deleteRecord(@RequestBody Laptop laptop){
+        if(manager.findById(laptop.getLaptopModel()).isPresent()){
+            manager.delete(laptop);
+            return laptop.getLaptopModel()+" has sold out";
+        }
+        return laptop.getLaptopModel()+" not available";
+    }
 
     @GetMapping("/{model}")
     public Optional<Laptop> readByPrimaryKey(@PathVariable("model") String model){

@@ -8,7 +8,10 @@ import org.springframework.stereotype.Repository;
  *  CrudRepository
  *  JpaRepository
  * 
- *  save>> insertion, updation, findAll>> read, findById>> read, delete
+ *  save>> insertion, updation, 
+ *  findAll>> read, 
+ *  findById>> read, 
+ *  delete>> deleteById, delete >> void
  */
 // CrudRepository<Entity,Type of Primary key property>
 @Repository // bean
