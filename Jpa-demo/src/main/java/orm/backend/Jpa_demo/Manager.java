@@ -2,9 +2,12 @@ package orm.backend.Jpa_demo;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+
+import jakarta.transaction.Transactional;
 
 /*
  * Hibernate repositories: interface performs operations via methods to affect the tables
@@ -47,4 +50,22 @@ public interface Manager extends CrudRepository<Laptop,String>{
     // Custom methods with SQL
     @Query(value = "select * from pc where pc_memory>=:size and pc_cost<=:amount",nativeQuery = true)
     List<Laptop> fetchManyBySizeAndAmount(int size,int amount);
+
+    // update by HQL
+    @Query("update Laptop set laptopPrice=laptopPrice-500")
+    @Transactional
+    @Modifying
+    int updateByDiscount();
+
+    // update by SQL
+    @Query(value = "update pc set pc_cost = pc_cost-1000 where pc_model like :brand%",nativeQuery = true)
+    @Transactional
+    @Modifying
+    int updateBrandDiscount(String brand);
+
+
+    @Query(value = "delete from Laptop where laptopSsd<=:size",nativeQuery = false)
+    @Modifying
+    @Transactional
+    int deleteByMemory(int size);
 }

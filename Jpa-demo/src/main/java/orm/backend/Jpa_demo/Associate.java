@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +17,21 @@ public class Associate {
     // dependency injection
     @Autowired
     Manager manager;
+
+    @DeleteMapping("/memory/{size}")
+    public String removeByMemory(@PathVariable("size") int size){
+        return manager.deleteByMemory(size)+" laptop's are discontinued";
+    }
+
+    @PutMapping("/offer/{brand}")
+    public String offerByBrand(@PathVariable("brand") String brand){
+        return manager.updateBrandDiscount(brand)+" laptop's are discounted";
+    }
+
+    @PutMapping("/festival")
+    public String offerDiscount(){
+        return manager.updateByDiscount()+" laptop's are available for disount";
+    }
 
     @GetMapping("/filter/{size}/{amount}")
     public List<Laptop> readManyConditionSQL(@PathVariable("size") int size, @PathVariable("amount") int amount){
