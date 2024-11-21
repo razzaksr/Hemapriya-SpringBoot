@@ -1,0 +1,27 @@
+POST http://localhost:8081/account/1
+Content-Type: application/json
+
+{
+    "accountType":"Deposit",
+    "accountNumber":65678676,
+    "accountBalance":57876.8,
+    "accountStatus":false
+}
+###
+GET http://localhost:8081/account/1
+###
+GET http://localhost:8081/account/
+###
+GET http://localhost:8081/customer/
+###
+POST http://localhost:8081/customer/
+Content-Type: application/json
+
+{
+    "customerName":"Sabarinathan S",
+    "customerAddress":"Salem",
+    "customerStatus":true,
+    "customerContact":87654567873,
+    "username":"sabari",
+    "password":"nathan"
+}
