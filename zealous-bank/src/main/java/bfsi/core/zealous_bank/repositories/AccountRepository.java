@@ -9,5 +9,6 @@ import bfsi.core.zealous_bank.entities.Account;
 
 @Repository
 public interface AccountRepository extends JpaRepository<Account,Integer> {
+    // findAllByProperty
     List<Account> findAllByCustomerCustomerId(int customerId);
 }

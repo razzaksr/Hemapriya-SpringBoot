@@ -24,7 +24,7 @@ public class Customer {
     // @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)// logical connection
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)// logical connection
     @JsonManagedReference
-    private List<Account> myAccounts;
+    private List<Account> myAccounts;// logical bonding
     public List<Account> getMyAccounts() {
         return myAccounts;
     }

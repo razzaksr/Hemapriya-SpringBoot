@@ -1,16 +1,18 @@
-POST http://localhost:8081/account/1
+POST http://localhost:8081/account/2
 Content-Type: application/json
 
 {
-    "accountType":"Deposit",
-    "accountNumber":65678676,
-    "accountBalance":57876.8,
-    "accountStatus":false
+    "accountType":"Fixed Deposit",
+    "accountNumber":987858585,
+    "accountBalance":98000.4,
+    "accountStatus":true
 }
 ###
-GET http://localhost:8081/account/1
+GET http://localhost:8081/account/4
 ###
 GET http://localhost:8081/account/
+###
+GET http://localhost:8081/customer/sabari
 ###
 GET http://localhost:8081/customer/
 ###
@@ -18,10 +20,10 @@ POST http://localhost:8081/customer/
 Content-Type: application/json
 
 {
-    "customerName":"Sabarinathan S",
+    "customerName":"Rajiya R",
     "customerAddress":"Salem",
     "customerStatus":true,
-    "customerContact":87654567873,
-    "username":"sabari",
-    "password":"nathan"
+    "customerContact":888888888887,
+    "username":"rajiya",
+    "password":"mohamed"
 }
