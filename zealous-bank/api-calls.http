@@ -1,3 +1,14 @@
+POST http://localhost:8081/transfer/
+Content-Type: application/json
+
+{
+    "transactionType":"NEFT",
+    "transactionFrom":45676545678765,
+    "transactionTo":7654567864,
+    "transactionAmount":8
+}
+
+###
 POST http://localhost:8081/account/2
 Content-Type: application/json
 
