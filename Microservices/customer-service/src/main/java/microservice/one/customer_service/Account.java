@@ -1,8 +1,10 @@
 package microservice.one.customer_service;
 
-public class Account {
+import java.io.Serializable;
+
+public class Account implements Serializable {
     private int accountId;
-    private Customer customer;
+    private int customer;
     private String accountType;
     private long accountNumber;
     private boolean accountStatus;
@@ -19,10 +21,10 @@ public class Account {
     public void setAccountId(int accountId) {
         this.accountId = accountId;
     }
-    public Customer getCustomer() {
+    public int getCustomer() {
         return customer;
     }
-    public void setCustomer(Customer customer) {
+    public void setCustomer(int customer) {
         this.customer = customer;
     }
     public String getAccountType() {

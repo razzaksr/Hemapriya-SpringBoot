@@ -32,7 +32,12 @@ public class CustomerService {
         return fetched;
     }
     public Optional<Customer> readOneCustomer(String username){
-        return repository.findByUsername(username);
+        Optional<Customer> fetched = repository.findByUsername(username);
+        fetched.stream().map(obj->{
+            obj.setMyAccounts(feignToAccount.receiveAccount(obj.getCustomerId()));
+            return obj;
+        }).collect(Collectors.toList());
+        return fetched;
     }
     public void deleteCustomer(Customer customer){
         repository.delete(customer);

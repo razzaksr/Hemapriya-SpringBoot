@@ -1,5 +1,6 @@
 package microservice.one.customer_service;
 
+import java.io.Serializable;
 import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,7 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Customer {
+public class Customer implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerId;
     private String customerName;
