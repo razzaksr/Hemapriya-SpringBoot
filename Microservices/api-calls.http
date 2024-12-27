@@ -1,4 +1,12 @@
 ###
+#Via Gateway
+
+GET http://localhost:8090/customer/
+###
+GET http://localhost:8090/account/
+###
+
+###
 POST http://localhost:8092/account/
 Content-Type: application/json
 
