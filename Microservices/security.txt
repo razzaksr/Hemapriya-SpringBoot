@@ -1,0 +1,64 @@
+Spring security:
+1. adding dependency>> random password generation
+2. jwt>> json web token
+    data base(limitless) + token(header,payload,signature)
+3. Inmemory authentication:
+    fixed/ pre determined username and password
+4. Basic authentication:
+    data base(limitless) + bcrypt encoding(password)
+
+jwt:
+json web token
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+
+json:
+{
+    "key":value
+}
+
+jwt:
+1. header
+2. payload
+3. signature
+
+HEADER:
+{
+"alg":"HS256",
+"typ":"JWT"
+}
+
+PAYLOAD:
+{
+  "sub": "1234567890",
+  "name": "John Doe",
+}
+
+SIGNATURE:
+It’s created by combining the encoded header and
+ payload with a secret key using the specified algorithm
+
+customer-service:
+    login   >> permit to all>> mention username&password
+        returns new token every login
+    view    >> token is required to access
+    register>> permit to all>> create customer
+    delete  >> token is required to access
+    update  >> token is required to access
+
+Pre-requisites for implementation:
+jjwt-jackson
+jjwt-impl
+jjwt-api
+
+Implementation of following:
+secret key required: base64 encoded
+
+    configure token generation:
+        token subject(username), claims, issue, expiry, secret
+    configure token validation:
+
+Spring Security:securityFilterChain
+Configure Endpoints to be secured:
+Configure Endpoints to be un-secured:
+

@@ -1,7 +1,12 @@
 ###
 #Via Gateway
 
+# before authentication
+#GET http://localhost:8090/customer/
+
+# after including spring security dependency/ generated password
 GET http://localhost:8090/customer/
+Authorization: Basic user:28bfde92-0280-4529-b356-1c992a25a589
 ###
 GET http://localhost:8090/account/
 ###
