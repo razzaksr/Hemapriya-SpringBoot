@@ -62,3 +62,14 @@ Spring Security:securityFilterChain
 Configure Endpoints to be secured:
 Configure Endpoints to be un-secured:
 
+
+
+Implementing Security(random password) at Customer service
+    Other service except customer are accessible without random password
+
+Implementing Security(random password) at gateway service
+    Accessing any service associated with gateway(gateway port) are protected(random password required)
+    however the services can be accessed via its own port was not protected
+
+Implementing JwtSecurity instead of random password at gateway:
+    

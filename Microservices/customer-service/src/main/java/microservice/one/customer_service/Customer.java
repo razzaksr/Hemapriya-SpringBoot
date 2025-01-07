@@ -1,7 +1,12 @@
 package microservice.one.customer_service;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,12 +14,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Customer implements Serializable {
+public class Customer implements UserDetails {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerId;
+    @Column(nullable = true)
     private String customerName;
+    @Column(nullable = true)
     private String customerAddress;
     private boolean customerStatus;
+    @Column(nullable = true)
     private long customerContact;
     private transient List<Account> myAccounts;// logical bonding
     public List<Account> getMyAccounts() {
@@ -67,5 +75,25 @@ public class Customer implements Serializable {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public boolean isAccountNonExpired() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+    @Override
+    public boolean isAccountNonLocked() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+    @Override
+    public boolean isCredentialsNonExpired() {
+        // TODO Auto-generated method stub
+        return true;
     }
 }

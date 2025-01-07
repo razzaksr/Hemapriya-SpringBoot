@@ -1,18 +1,42 @@
 ###
+#Jwt
+
+POST http://localhost:8090/auth/register
+Content-Type: application/json
+
+{
+    "customerName":"Rajiya R",
+    "customerAddress":"Salem",
+    "customerStatus":true,
+    "customerContact":888888888887,
+    "username":"mohamed",
+    "password":"mohamed"
+}
+###
+POST http://localhost:8091/auth/login
+Content-Type: application/json
+
+{
+    "username":"mohamed",
+    "password":"mohamed"
+}
+###
 #Via Gateway
 
-# before authentication
-#GET http://localhost:8090/customer/
-
-# after including spring security dependency/ generated password
+# security implemented in gateway service
 GET http://localhost:8090/customer/
-Authorization: Basic user:28bfde92-0280-4529-b356-1c992a25a589
+Authorization: Basic user:3717cafb-70ed-4d4c-852b-6aa59d3211a0
+
+# after included in customer-service spring security dependency/ generated password
+# GET http://localhost:8090/customer/
+# Authorization: Basic user:28bfde92-0280-4529-b356-1c992a25a589
 ###
 GET http://localhost:8090/account/
+Authorization: Basic user:3717cafb-70ed-4d4c-852b-6aa59d3211a0
 ###
 
 ###
-POST http://localhost:8092/account/
+POST http://localhost:8093/account/
 Content-Type: application/json
 
 {
@@ -24,9 +48,9 @@ Content-Type: application/json
     "accountBalance": 98000.4
 }
 ###
-GET http://localhost:8092/account/4
+GET http://localhost:8093/account/4
 ###
-GET http://localhost:8092/account/
+GET http://localhost:8093/account/
 ###
 GET http://localhost:8091/customer/sabari
 ###

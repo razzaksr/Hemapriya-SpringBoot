@@ -5,10 +5,13 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerService {
+public class CustomerService implements UserDetailsService {
     @Autowired
     CustomerRepository repository;
 
@@ -41,5 +44,14 @@ public class CustomerService {
     }
     public void deleteCustomer(Customer customer){
         repository.delete(customer);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        // TODO Auto-generated method stub
+        Customer customer = repository.findByUsername(username).get();
+        if(customer==null)
+            throw new UsernameNotFoundException(username);
+        return customer;
     }
 }
