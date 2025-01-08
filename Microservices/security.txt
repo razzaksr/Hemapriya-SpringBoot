@@ -71,5 +71,11 @@ Implementing Security(random password) at gateway service
     Accessing any service associated with gateway(gateway port) are protected(random password required)
     however the services can be accessed via its own port was not protected
 
+Not possible:
+Securing customer not account via gateway using random password:
+    1. SecurityConfig
+    2. securityFilterChain
+
+
 Implementing JwtSecurity instead of random password at gateway:
     

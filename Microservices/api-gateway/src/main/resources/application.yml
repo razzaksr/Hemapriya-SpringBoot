@@ -10,12 +10,10 @@ spring:
           uri: lb://ACCOUNT-SERVICE
           predicates:
             - Path=/account/**
-          filters:
-            - JwtTokenFilter
         - id: CUSTOMER-SERVICE
           uri: lb://CUSTOMER-SERVICE
           predicates:
-            - Path=/auth/**
+            - Path=/customer/**
 
 eureka:
   client:
