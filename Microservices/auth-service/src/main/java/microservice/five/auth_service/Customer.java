@@ -1,24 +1,41 @@
-package microservice.one.customer_service;
+package microservice.five.auth_service;
 
-import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
-@Entity
-public class Customer implements Serializable {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+public class Customer implements UserDetails {
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public boolean isAccountNonExpired() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+    @Override
+    public boolean isAccountNonLocked() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+    @Override
+    public boolean isCredentialsNonExpired() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+    @Override
+    public boolean isEnabled() {
+        // TODO Auto-generated method stub
+        return true;
+    }
     private int customerId;
-    @Column(nullable = true)
     private String customerName;
-    @Column(nullable = true)
     private String customerAddress;
-    @Column(nullable = true)
     private boolean customerStatus;
-    @Column(nullable = true)
     private long customerContact;
     private transient List<Account> myAccounts;// logical bonding
     public List<Account> getMyAccounts() {
@@ -27,7 +44,6 @@ public class Customer implements Serializable {
     public void setMyAccounts(List<Account> myAccounts) {
         this.myAccounts = myAccounts;
     }
-    @Column(unique = true)
     private String username;
     private String password;
     public int getCustomerId() {

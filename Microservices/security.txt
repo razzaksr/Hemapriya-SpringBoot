@@ -78,4 +78,20 @@ Securing customer not account via gateway using random password:
 
 
 Implementing JwtSecurity instead of random password at gateway:
+    required dependencies: (from mvnrepository)
+        jjwt api, jjwt impl, jjwt jackson
     
+    customer    >> crud >> 
+    authentication> controller>> feignConnect to customer, login, signup
+                    jjwt>> token generation
+                    implementation spring security
+                    security config
+
+                    user>> auth-service         fiegntocustomer  customer-service/customerController
+                            customer
+                                password>encode     customer       save 
+
+    account     >> account details>> crud
+    gateway     >> jjwt, validating token, filter for authorizing services
+
+

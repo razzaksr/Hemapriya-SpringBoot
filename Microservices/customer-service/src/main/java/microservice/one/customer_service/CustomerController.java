@@ -42,8 +42,8 @@ public class CustomerController {
 
     @PostMapping("/")
     public Customer apiCreate(@RequestBody Customer customer){
-        String temp = Base64.getEncoder().encodeToString(customer.getPassword().getBytes());
-        customer.setPassword(temp);
+        //String temp = Base64.getEncoder().encodeToString(customer.getPassword().getBytes());
+        //customer.setPassword(temp);
         return service.createCustomer(customer);
     }
 }

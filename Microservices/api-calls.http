@@ -1,4 +1,22 @@
 ###
+#auth service 
+
+###
+POST http://localhost:8094/auth/signup
+Content-Type: application/json
+
+{
+    "customerId":2,
+    "customerName":"Razak Moahmed S",
+    "customerAddress":"Salem",
+    "customerStatus":true,
+    "customerContact":888888888887,
+    "username":"razak",
+    "password":"mohamed"
+}
+
+
+###
 #Via Gateway
 
 # security implemented in gateway service
