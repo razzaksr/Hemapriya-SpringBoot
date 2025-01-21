@@ -21,6 +21,9 @@ public class AuthorizeController {
     PasswordEncoder passwordEncoder;
 
     @Autowired
+    JwtUtility utility;
+
+    @Autowired
     AuthenService service;
 
     @PostMapping("/signup")
@@ -29,14 +32,15 @@ public class AuthorizeController {
         return service.register(customer);
     }
 
-    // @PostMapping("/login")
-    // public String login(@RequestBody Customer customer){
-    //     Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(customer.getUsername(), customer.getPassword()));
-    //     if(authentication.isAuthenticated()){
-    //         // generqate token using jwt
-    //     }
-    //     else{
-    //         throw new RuntimeException("Invalid access");
-    //     }
-    // }
+    @PostMapping("/login")
+    public String login(@RequestBody Customer customer){
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(customer.getUsername(), customer.getPassword()));
+        if(authentication.isAuthenticated()){
+            // generqate token using jwt
+            return utility.generateToken(customer.getUsername());
+        }
+        else{
+            throw new RuntimeException("Invalid access");
+        }
+    }
 }
