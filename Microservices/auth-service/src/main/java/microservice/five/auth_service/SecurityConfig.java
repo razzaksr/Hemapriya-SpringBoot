@@ -14,8 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import com.thoughtworks.xstream.core.util.Base64Encoder;
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -25,7 +23,7 @@ public class SecurityConfig {
     AuthenService userDetailsService;
 
     @Bean
-    public AuthenticationManager gAuthenticationManager(AuthenticationConfiguration config) throws Exception{
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception{
         return config.getAuthenticationManager();
     }
 
@@ -44,6 +42,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        System.out.println("Access filter chain");
         return http.csrf(Customizer->Customizer.disable())
         .authorizeHttpRequests(request->request.requestMatchers("/auth/signup", "/auth/login")
         .permitAll()

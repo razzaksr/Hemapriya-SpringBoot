@@ -1,6 +1,15 @@
 ###
-#auth service 
+# access auth service via gateway 
+POST http://localhost:8090/auth/login
+Content-Type: application/json
 
+{
+    "username":"rajiya",
+    "password":"mohamed"
+}
+###
+
+#auth service 
 POST http://localhost:8094/auth/login
 Content-Type: application/json
 
@@ -26,6 +35,9 @@ Content-Type: application/json
 
 ###
 #Via Gateway
+GET http://localhost:8090/customer/
+###
+GET http://localhost:8090/account/
 
 # security implemented in gateway service
 GET http://localhost:8090/customer/
