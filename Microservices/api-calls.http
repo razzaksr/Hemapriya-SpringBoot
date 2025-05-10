@@ -1,5 +1,25 @@
 ###
 # access auth service via gateway 
+GET http://localhost:8090/customer/
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWppeWEiLCJpYXQiOjE3NDY4NjI0NTYsImV4cCI6MTc0Njg2MjU2NH0.jH8bhghg9szvNjyxLqWPvKCsEuQBTRCH0_qBQ1epqi0
+###
+GET http://localhost:8090/account/
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWppeWEiLCJpYXQiOjE3NDY4NjI0NTYsImV4cCI6MTc0Njg2MjU2NH0.jH8bhghg9szvNjyxLqWPvKCsEuQBTRCH0_qBQ1epqi0
+###
+POST http://localhost:8090/auth/signup
+Content-Type: application/json
+
+{
+    "customerId": 4,
+    "customerName": "Rajiya R",
+    "customerAddress": "Salem",
+    "customerStatus": true,
+    "customerContact": 888888888887,
+    "username": "rajiya",
+    "password": "mohamed"
+}
+
+###
 POST http://localhost:8090/auth/login
 Content-Type: application/json
 

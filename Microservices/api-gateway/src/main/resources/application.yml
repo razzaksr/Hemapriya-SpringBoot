@@ -14,10 +14,14 @@ spring:
           uri: lb://ACCOUNT-SERVICE
           predicates:
             - Path=/account/**
+          filters:
+            - MyAuthenticationFilter
         - id: CUSTOMER-SERVICE
           uri: lb://CUSTOMER-SERVICE
           predicates:
             - Path=/customer/**
+          filters:
+            - MyAuthenticationFilter
 
 eureka:
   client:

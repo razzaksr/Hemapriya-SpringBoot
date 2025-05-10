@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 public class MyAuthenticationFilter extends AbstractGatewayFilterFactory<MyAuthenticationFilter.Config>{
     public static class Config{}
 
-    public MyAuthenticationFilter(){super();}
+    public MyAuthenticationFilter(){super(Config.class);}
 
     @Autowired
     JwtService service;
@@ -22,7 +22,7 @@ public class MyAuthenticationFilter extends AbstractGatewayFilterFactory<MyAuthe
         // TODO Auto-generated method stub
         return (exchange,chain)->{
             String authHeader = exchange.getRequest().getHeaders().getFirst("Authorization");
-            if(authHeader==null || !authHeader.startsWith("Bearer")){
+            if(authHeader==null || !authHeader.startsWith("Bearer ")){
                 return Mono.error(new RuntimeException("Missing Bearer Header"));
             }
             try{
